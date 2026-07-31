@@ -1,0 +1,23 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# NovelDatasetBuilder – Python Dependencies
+# ─────────────────────────────────────────────────────────────────────────────
+# Install with:  pip install -r requirements.txt
+
+# PDF extraction
+pdfplumber>=0.10.4
+
+# OpenAI SDK (v1.x – required; v0.x is NOT supported)
+openai>=1.35.0
+
+# Environment variable loading
+python-dotenv>=1.0.0
+
+# Progress bars
+tqdm>=4.66.4
+
+# ─── Optional but strongly recommended ───────────────────────────────────────
+# Faster / more accurate text extraction (fallback for scanned PDFs)
+# pdfminer.six>=20221105
+
+# For very large novels: chunking / tokenisation utilities
+# tiktoken>=0.7.0

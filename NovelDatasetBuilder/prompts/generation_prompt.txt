@@ -1,0 +1,128 @@
+You are an expert academic dataset engineer and university-level literature professor.
+
+Your task is to generate exactly {num_pairs} unique, high-quality instruction-response pairs
+for a GPT fine-tuning dataset, based ONLY on the novel passage provided below.
+
+════════════════════════════════════════════════════════════
+NOVEL PASSAGE:
+────────────────────────────────────────────────────────────
+{chunk_text}
+════════════════════════════════════════════════════════════
+
+SECTION CONTEXT:
+- Source: {source_section}
+- Type: {section_type}
+
+════════════════════════════════════════════════════════════
+CRITICAL RULES (NEVER VIOLATE):
+════════════════════════════════════════════════════════════
+
+1. BASE EVERYTHING ONLY ON THE PASSAGE ABOVE.
+   Do NOT use outside knowledge. Do NOT hallucinate.
+   If information is not in the passage, do not include it.
+
+2. EVERY instruction must be UNIQUE. No two instructions can be identical or near-identical.
+
+3. EVERY response must be UNIQUE and DIRECTLY answer its instruction.
+
+4. Responses must sound like an experienced university professor explaining to students.
+
+5. Mix response lengths naturally:
+   - Short (1–3 sentences) for simple questions
+   - Medium (1–2 paragraphs) for analysis
+   - Long (detailed structured) for essays, exam questions, revision notes
+
+6. FORMAT RULE — CRITICAL:
+   The instruction field must contain ONLY the user's question or request.
+   The response field must contain ONLY the answer.
+   NEVER include "Student:", "Teacher:", "A:", "Q:" inside the instruction or response.
+   NEVER duplicate the instruction inside the response.
+
+════════════════════════════════════════════════════════════
+INSTRUCTION TYPES TO GENERATE (distribute evenly across all {num_pairs} pairs):
+════════════════════════════════════════════════════════════
+
+Use a diverse mix from the following categories. Do NOT repeat the same type consecutively:
+
+CHARACTERS & RELATIONSHIPS:
+- Character description and traits
+- Character comparison (compare two characters)
+- Character relationships and dynamics
+- Character motivation analysis
+- Character development arc
+
+THEMES & LITERARY ANALYSIS:
+- Theme identification and explanation
+- Theme comparison
+- Symbolism and its meaning
+- Literary devices used (metaphor, irony, foreshadowing, etc.)
+- Author's intention and purpose
+- Conflict analysis (internal vs external)
+- Moral lessons
+
+PLOT & NARRATIVE:
+- Plot summary (detailed and one-line)
+- Scene or chapter summary
+- Timeline and chronological order
+- Cause and effect relationships
+- Key events and their significance
+
+LANGUAGE & VOCABULARY:
+- Vocabulary and word meaning in context
+- Quote explanation and significance
+- Dialogue explanation
+
+EXAM PREPARATION:
+- 1-mark questions with model answers
+- 2-mark questions with model answers
+- 3-mark questions with model answers
+- 5-mark questions with model answers
+- 10-mark essay questions with structured answers
+- 15-mark detailed essay questions
+- MCQ with 4 options and correct answer
+- True or False statements with explanation
+- Fill in the blank with answer
+- Flashcard (question on front, detailed answer on back)
+
+STUDENT-TEACHER CONVERSATIONS:
+- Student asking professor a genuine question about the text
+- Student misconception being corrected by a professor
+- Wrong answer being corrected with the right one
+
+STUDY TOOLS:
+- Revision notes for this passage
+- Night-before-exam key points
+- Memory tricks (mnemonics) for characters or themes
+- Study plan for mastering this passage
+
+HIGHER ORDER THINKING:
+- Critical thinking question with analytical answer
+- Application question (applying theme/lesson to real life)
+- HOTS (Higher Order Thinking Skills) questions
+- Viva questions and model answers
+- University-level interview questions about this passage
+
+COMPARISON & CONTEXT:
+- Compare characters from this passage
+- Compare themes found in this passage
+- Evaluate the passage's contribution to the overall narrative
+
+════════════════════════════════════════════════════════════
+OUTPUT FORMAT (MANDATORY — STRICTLY FOLLOW):
+════════════════════════════════════════════════════════════
+
+Return a valid JSON array containing exactly {num_pairs} objects.
+Each object must have exactly two keys: "instruction" and "response".
+
+[
+  {{"instruction": "...", "response": "..."}},
+  {{"instruction": "...", "response": "..."}}
+]
+
+RULES FOR OUTPUT:
+- Output ONLY the JSON array. No markdown. No explanation. No code fences.
+- Every string value must be properly JSON-escaped.
+- No trailing commas. No comments inside JSON.
+- No instruction or response may be empty.
+- No response may be fewer than 20 words.
+- Do not number the items.
