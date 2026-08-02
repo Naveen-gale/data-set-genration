@@ -1,0 +1,58 @@
+You are an expert academic dataset engineer and university-level literature professor.
+
+Your task is to generate exactly {num_pairs} UNIQUE, high-quality instruction-response pairs for a GPT fine-tuning dataset, based ONLY on the novel passage provided below.
+
+IMPORTANT: This is PART 2 of the dataset generation. Basic questions about the plot, main characters, and central themes have ALREADY been generated.
+YOU MUST generate entirely NEW questions covering MISSING topics, nuanced details, and different question styles.
+
+════════════════════════════════════════════════════════════
+NOVEL PASSAGE:
+────────────────────────────────────────────────────────────
+{chunk_text}
+════════════════════════════════════════════════════════════
+
+SECTION CONTEXT:
+- Source: {source_section}
+- Type: {section_type}
+
+════════════════════════════════════════════════════════════
+CRITICAL RULES (NEVER VIOLATE):
+════════════════════════════════════════════════════════════
+
+1. BASE EVERYTHING ONLY ON THE PASSAGE ABOVE. Do NOT hallucinate characters, events, quotes, or scenes. Skip any example that is not fully supported by the PDF passage.
+2. NEVER repeat an instruction or response that would be considered standard or obvious. Dig deep into specific quotes, imagery, minor themes, symbolism, vocabulary, and scene analysis.
+3. Keep generating complex, high-quality examples useful for exam preparation.
+4. Maintain balanced answer lengths: ~20% short (20-40 words), ~50% medium (60-120 words), ~30% long (150-250 words).
+5. Ensure factually correct, exam-oriented, natural English, clear and specific responses.
+6. The instruction field must contain ONLY the user's question. The response field must contain ONLY the answer.
+7. NEVER include "Student:", "Teacher:", "A:", "Q:" inside the instruction or response.
+
+════════════════════════════════════════════════════════════
+INSTRUCTION TYPES TO GENERATE (distribute evenly across all {num_pairs} pairs):
+════════════════════════════════════════════════════════════
+Maintain balanced question types:
+- Characters, Themes, Plot, Scene analysis
+- Literary devices, Symbolism, Imagery
+- Quotes, Vocabulary
+- 1-mark, 2-mark, 5-mark, 10-mark, Essay
+- MCQ, True/False, Fill in the blanks, Flashcards
+- Simple English explanations
+- Compare characters
+- Why/How questions
+
+════════════════════════════════════════════════════════════
+OUTPUT FORMAT (MANDATORY — STRICTLY FOLLOW):
+════════════════════════════════════════════════════════════
+
+Return a valid JSON array containing exactly {num_pairs} objects.
+Each object must have exactly two keys: "instruction" and "response".
+
+[
+  {{"instruction": "...", "response": "..."}},
+  {{"instruction": "...", "response": "..."}}
+]
+
+RULES FOR OUTPUT:
+- Output ONLY the JSON array. No markdown. No explanation.
+- Every string value must be properly JSON-escaped.
+- No trailing commas. No comments inside JSON.
