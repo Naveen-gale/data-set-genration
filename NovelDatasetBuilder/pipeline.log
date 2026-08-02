@@ -759,3 +759,40 @@
 2026-08-02 22:19:03 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-02 22:19:03 | ERROR    | src.llm_generator | 429: Groq asks to wait 1579s (26.3 min) — daily token quota likely hit.
   Progress is SAVED via checkpoint. Re-run with --resume after 26 minutes.
+2026-08-02 22:19:43 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-02 22:19:43 | ERROR    | src.llm_generator | 429: Groq asks to wait 1539s (25.6 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 26 minutes.
+2026-08-02 22:19:43 | INFO     | src.llm_generator | Generation complete. Total pairs: 720
+2026-08-02 22:19:43 | INFO     | __main__ | Raw pairs generated/accumulated: 720
+2026-08-02 22:19:43 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 5 │ Validating dataset
+══════════════════════════════════════════════════════════════════════
+2026-08-02 22:19:43 | INFO     | src.validator | Validator: reading 720 lines from C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl
+2026-08-02 22:19:43 | INFO     | src.validator | Validation: 720 valid / 0 dropped from 720 total lines.
+2026-08-02 22:19:43 | INFO     | __main__ | Validation: 720 in → 720 valid.
+2026-08-02 22:19:43 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 6 │ Deduplicating dataset
+══════════════════════════════════════════════════════════════════════
+2026-08-02 22:19:43 | INFO     | src.deduplicate | Deduplicator: loaded 720 pairs.
+2026-08-02 22:19:43 | INFO     | src.deduplicate | After exact dedup: 684 pairs.
+2026-08-02 22:19:43 | INFO     | src.deduplicate | After response dedup: 684 pairs.
+2026-08-02 22:19:43 | INFO     | src.deduplicate | After quality filter: 684 pairs.
+2026-08-02 22:19:44 | INFO     | src.deduplicate | Near-dedup dropped 65 near-duplicate pairs.
+2026-08-02 22:19:44 | INFO     | src.deduplicate | After near-dedup: 619 pairs.
+2026-08-02 22:19:44 | INFO     | src.deduplicate | Deduplication complete. 619 pairs saved to C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl.
+2026-08-02 22:19:44 | INFO     | __main__ | Deduplicated dataset size: 619 pairs.
+2026-08-02 22:19:44 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Pipeline Complete
+══════════════════════════════════════════════════════════════════════
+2026-08-02 22:19:44 | INFO     | __main__ | 
+  ✓ Input PDF          : C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\input\novel.pdf
+  ✓ Sections detected  : 6
+  ✓ Chunks processed   : 14
+  ✓ Pairs generated    : 720
+  ✓ Pairs after valid  : 720
+  ✓ Final dataset size : 619 pairs
+  ✓ Output file        : C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl
+  ✓ Time elapsed       : 1405.5 seconds
