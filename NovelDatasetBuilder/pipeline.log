@@ -902,3 +902,219 @@
 2026-08-03 20:36:30 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
 2026-08-03 20:36:30 | ERROR    | src.llm_generator | 429: Groq asks to wait 3839s (64.0 min) — daily token quota likely hit.
   Progress is SAVED via checkpoint. Re-run with --resume after 64 minutes.
+2026-08-04 21:41:02 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 0 │ Validating configuration
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:41:02 | INFO     | src.config | Provider: GROQ | Model: llama-3.3-70b-versatile | Batch size: 20 pairs | Inter-request delay: 40.0s
+2026-08-04 21:41:02 | INFO     | __main__ | RESUME MODE: Keeping existing dataset (1150 pairs). Will skip already-processed chunks.
+2026-08-04 21:41:02 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 1 │ Extracting PDF text
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:41:02 | INFO     | src.extract_pdf | Extracting PDF: C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\input\novel.pdf
+2026-08-04 21:41:02 | INFO     | src.extract_pdf | PDF has 41 pages.
+2026-08-04 21:41:05 | INFO     | src.extract_pdf | Extraction complete. Total characters: 54148
+2026-08-04 21:41:05 | INFO     | __main__ | Extracted 10202 words from the novel.
+2026-08-04 21:41:05 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 2 │ Detecting novel sections
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:41:05 | INFO     | src.detect_sections | Detected 6 structural sections.
+2026-08-04 21:41:05 | INFO     | __main__ | Detected 6 sections.
+2026-08-04 21:41:05 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 3 │ Building text chunks
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:41:05 | INFO     | src.chunk_builder | Built 14 chunks total.
+2026-08-04 21:41:05 | INFO     | __main__ | Built 14 chunks. Average size: 728 words.
+2026-08-04 21:41:05 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 4 │ Generating instruction-response pairs via LLM
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:41:05 | INFO     | src.llm_generator | Provider: GROQ | Model: llama-3.3-70b-versatile | Delay: 40s | Batch: 20 pairs
+2026-08-04 21:41:06 | INFO     | src.llm_generator | Plan: 14 chunks x 3 batches x 20 pairs = ~840 pairs | Delay: 40s/call | Est: ~28 min
+2026-08-04 21:41:06 | INFO     | src.llm_generator | Resume: found checkpoint — 8 chunks already done: [0, 1, 2, 3, 4, 5, 6, 7]
+2026-08-04 21:41:06 | INFO     | src.llm_generator | Resuming: 1150 pairs already in output file, skipping 8 completed chunks.
+2026-08-04 21:41:14 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:41:14 | INFO     | src.llm_generator | Chunk 8 | Batch 0 -> 20/20 pairs valid
+2026-08-04 21:41:51 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:41:51 | INFO     | src.llm_generator | Chunk 8 | Batch 1 -> 20/20 pairs valid
+2026-08-04 21:42:36 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:42:36 | INFO     | src.llm_generator | Chunk 8 | Batch 2 -> 23/23 pairs valid
+2026-08-04 21:43:11 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:43:11 | INFO     | src.llm_generator | Chunk 9 | Batch 0 -> 21/21 pairs valid
+2026-08-04 21:43:53 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:43:53 | INFO     | src.llm_generator | Chunk 9 | Batch 1 -> 20/20 pairs valid
+2026-08-04 21:44:31 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:44:31 | INFO     | src.llm_generator | Chunk 9 | Batch 2 -> 20/20 pairs valid
+2026-08-04 21:45:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:45:12 | INFO     | src.llm_generator | Chunk 10 | Batch 0 -> 21/21 pairs valid
+2026-08-04 21:45:54 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:45:54 | INFO     | src.llm_generator | Chunk 10 | Batch 1 -> 21/21 pairs valid
+2026-08-04 21:46:36 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:46:36 | INFO     | src.llm_generator | Chunk 10 | Batch 2 -> 23/23 pairs valid
+2026-08-04 21:47:13 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:47:13 | INFO     | src.llm_generator | Chunk 11 | Batch 0 -> 21/21 pairs valid
+2026-08-04 21:47:55 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:47:55 | INFO     | src.llm_generator | Chunk 11 | Batch 1 -> 21/21 pairs valid
+2026-08-04 21:48:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:48:32 | INFO     | src.llm_generator | Chunk 11 | Batch 2 -> 21/21 pairs valid
+2026-08-04 21:49:10 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:49:10 | INFO     | src.llm_generator | Chunk 12 | Batch 0 -> 20/20 pairs valid
+2026-08-04 21:49:54 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:49:54 | INFO     | src.llm_generator | Chunk 12 | Batch 1 -> 21/21 pairs valid
+2026-08-04 21:50:31 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:50:31 | INFO     | src.llm_generator | Chunk 12 | Batch 2 -> 19/19 pairs valid
+2026-08-04 21:51:13 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:51:13 | INFO     | src.llm_generator | Chunk 13 | Batch 0 -> 21/21 pairs valid
+2026-08-04 21:51:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:51:52 | INFO     | src.llm_generator | Chunk 13 | Batch 1 -> 21/21 pairs valid
+2026-08-04 21:52:30 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 21:52:30 | INFO     | src.llm_generator | Chunk 13 | Batch 2 -> 19/19 pairs valid
+2026-08-04 21:52:30 | INFO     | src.llm_generator | Generation complete. Total pairs: 1510
+2026-08-04 21:52:30 | INFO     | __main__ | Raw pairs generated/accumulated: 1510
+2026-08-04 21:52:30 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 5 │ Validating dataset
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:52:30 | INFO     | src.validator | Validator: reading 1509 lines from C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl
+2026-08-04 21:52:30 | INFO     | src.validator | Validation: 1483 valid / 26 dropped from 1509 total lines.
+2026-08-04 21:52:30 | INFO     | __main__ | Validation: 1509 in → 1483 valid.
+2026-08-04 21:52:30 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 6 │ Deduplicating dataset
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:52:30 | INFO     | src.deduplicate | Deduplicator: loaded 1483 pairs.
+2026-08-04 21:52:30 | INFO     | src.deduplicate | After exact dedup: 1314 pairs.
+2026-08-04 21:52:30 | INFO     | src.deduplicate | After response dedup: 1314 pairs.
+2026-08-04 21:52:30 | INFO     | src.deduplicate | After quality filter: 1314 pairs.
+2026-08-04 21:52:33 | INFO     | src.deduplicate | Near-dedup dropped 226 near-duplicate pairs.
+2026-08-04 21:52:33 | INFO     | src.deduplicate | After near-dedup: 1088 pairs.
+2026-08-04 21:52:33 | INFO     | src.deduplicate | Deduplication complete. 1088 pairs saved to C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl.
+2026-08-04 21:52:33 | INFO     | __main__ | Deduplicated dataset size: 1088 pairs.
+2026-08-04 21:52:33 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Pipeline Complete
+══════════════════════════════════════════════════════════════════════
+2026-08-04 21:52:33 | INFO     | __main__ | 
+  ✓ Input PDF          : C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\input\novel.pdf
+  ✓ Sections detected  : 6
+  ✓ Chunks processed   : 14
+  ✓ Pairs generated    : 1510
+  ✓ Pairs after valid  : 1483
+  ✓ Final dataset size : 1088 pairs
+  ✓ Output file        : C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\output\final_dataset.jsonl
+  ✓ Time elapsed       : 691.3 seconds
+2026-08-04 22:12:50 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 0 │ Validating configuration
+══════════════════════════════════════════════════════════════════════
+2026-08-04 22:12:50 | INFO     | src.config | Provider: GROQ | Model: llama-3.3-70b-versatile | Batch size: 20 pairs | Inter-request delay: 40.0s
+2026-08-04 22:12:50 | INFO     | __main__ | RESUME MODE: Keeping existing dataset (1483 pairs). Will skip already-processed chunks.
+2026-08-04 22:12:50 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 1 │ Extracting PDF text
+══════════════════════════════════════════════════════════════════════
+2026-08-04 22:12:50 | INFO     | src.extract_pdf | Extracting PDF: C:\Users\galen\Desktop\data set genration\NovelDatasetBuilder\input\novel.pdf
+2026-08-04 22:12:50 | INFO     | src.extract_pdf | PDF has 41 pages.
+2026-08-04 22:12:52 | INFO     | src.extract_pdf | Extraction complete. Total characters: 54148
+2026-08-04 22:12:52 | INFO     | __main__ | Extracted 10202 words from the novel.
+2026-08-04 22:12:52 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 2 │ Detecting novel sections
+══════════════════════════════════════════════════════════════════════
+2026-08-04 22:12:52 | INFO     | src.detect_sections | Detected 6 structural sections.
+2026-08-04 22:12:52 | INFO     | __main__ | Detected 6 sections.
+2026-08-04 22:12:52 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 3 │ Building text chunks
+══════════════════════════════════════════════════════════════════════
+2026-08-04 22:12:52 | INFO     | src.chunk_builder | Built 14 chunks total.
+2026-08-04 22:12:52 | INFO     | __main__ | Built 14 chunks. Average size: 728 words.
+2026-08-04 22:12:52 | INFO     | __main__ | 
+══════════════════════════════════════════════════════════════════════
+  Stage 4 │ Generating instruction-response pairs via LLM
+══════════════════════════════════════════════════════════════════════
+2026-08-04 22:12:52 | INFO     | src.llm_generator | Provider: GROQ | Model: llama-3.3-70b-versatile | Delay: 40s | Batch: 20 pairs
+2026-08-04 22:12:52 | INFO     | src.llm_generator | Plan: 14 chunks x 3 batches x 20 pairs = ~840 pairs | Delay: 40s/call | Est: ~28 min
+2026-08-04 22:12:53 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:12:53 | ERROR    | src.llm_generator | 429: Groq asks to wait 349s (5.8 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 6 minutes.
+2026-08-04 22:13:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:13:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 309s (5.2 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 5 minutes.
+2026-08-04 22:14:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:14:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 269s (4.5 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 4 minutes.
+2026-08-04 22:14:57 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-04 22:14:57 | INFO     | src.llm_generator | Chunk 1 | Batch 0 -> 21/21 pairs valid
+2026-08-04 22:15:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:15:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 5028s (83.8 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 84 minutes.
+2026-08-04 22:16:13 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:16:13 | ERROR    | src.llm_generator | 429: Groq asks to wait 4988s (83.1 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 83 minutes.
+2026-08-04 22:16:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:16:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 5446s (90.8 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 91 minutes.
+2026-08-04 22:17:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:17:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 5406s (90.1 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 90 minutes.
+2026-08-04 22:18:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:18:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 5366s (89.4 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 89 minutes.
+2026-08-04 22:18:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:18:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 3566s (59.4 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 59 minutes.
+2026-08-04 22:19:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:19:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 5478s (91.3 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 91 minutes.
+2026-08-04 22:20:13 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:20:13 | ERROR    | src.llm_generator | 429: Groq asks to wait 5438s (90.6 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 91 minutes.
+2026-08-04 22:20:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:20:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 5376s (89.6 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 90 minutes.
+2026-08-04 22:21:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:21:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 5335s (88.9 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 89 minutes.
+2026-08-04 22:22:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:22:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 5295s (88.2 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 88 minutes.
+2026-08-04 22:22:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:22:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 5307s (88.5 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 88 minutes.
+2026-08-04 22:23:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:23:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 5267s (87.8 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 88 minutes.
+2026-08-04 22:24:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:24:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 5227s (87.1 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 87 minutes.
+2026-08-04 22:24:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:24:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 5036s (83.9 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 84 minutes.
+2026-08-04 22:25:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:25:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 4996s (83.3 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 83 minutes.
+2026-08-04 22:26:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:26:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 4956s (82.6 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 83 minutes.
+2026-08-04 22:26:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:26:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 4752s (79.2 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 79 minutes.
+2026-08-04 22:27:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:27:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 4712s (78.5 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 79 minutes.
+2026-08-04 22:28:13 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:28:13 | ERROR    | src.llm_generator | 429: Groq asks to wait 4672s (77.9 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 78 minutes.
+2026-08-04 22:28:52 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:28:52 | ERROR    | src.llm_generator | 429: Groq asks to wait 5020s (83.7 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 84 minutes.
+2026-08-04 22:29:32 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:29:32 | ERROR    | src.llm_generator | 429: Groq asks to wait 4980s (83.0 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 83 minutes.
+2026-08-04 22:30:12 | INFO     | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-08-04 22:30:12 | ERROR    | src.llm_generator | 429: Groq asks to wait 4940s (82.3 min) — daily token quota likely hit.
+  Progress is SAVED via checkpoint. Re-run with --resume after 82 minutes.
